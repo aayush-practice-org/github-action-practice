@@ -1,7 +1,9 @@
 name: test
 
 on: 
-    workflow_dispatch:
+    push: 
+        branches:
+          - main
       
 
 jobs:
@@ -10,3 +12,9 @@ jobs:
         steps:
           - run: "echo Test"
           - run: "echo job one test"
+            
+    job-2:
+        runs-on: ubuntu-22.04
+        steps:
+          - run: "echo Test form job 2 "
+          - run: "echo job two test "
