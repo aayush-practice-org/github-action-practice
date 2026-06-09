@@ -7,17 +7,17 @@ on:
       
 
 jobs:
-    job-1:
-        runs-on: ubuntu-22.04
+   build:
+        runs-on: ubuntu-latest
+
+        strategy:
+          matrix:
+                node-version: [14.x, 16.x, 18.x]
         steps:
-          - run: "echo Test"
-          - run: "echo job one test"
-            
-    job-2:
-        runs-on: ubuntu-22.04
-        steps:
-          - run: "echo Test form job 2 "
-          - run: "echo job two test "
-            
-        needs: 
-            - job-1  
+         - uses: actions/checkout@v6 
+         - uses: actions/setup-node@v6
+           with:
+             node-version: ${{matrix.node-version}}
+
+         - run: 'echo building application'    
+         - run: npm run  build
