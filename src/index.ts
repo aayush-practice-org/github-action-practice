@@ -2,7 +2,7 @@ import express  from 'express';
 import type { Request, Response } from "express";
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = Number(process.env.PORT);
 
 app.use(express.json());
 
@@ -21,6 +21,15 @@ app.get("/post/:id", async (req: Request, res: Response): Promise<void> => {
     res.send(data);
 });
 
+app.get("/", (req, res) => {
+  res.send("hello");
+});
+
+
 app.listen(PORT, () => {
     console.log("Server is running on port: ", PORT);
 })
+
+export function addNumber(a: number, b: number) {
+  return a + b;
+}
