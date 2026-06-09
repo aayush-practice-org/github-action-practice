@@ -20,4 +20,5 @@ jobs:
              node-version: ${{matrix.node-version}}
 
          - run: 'echo building application'    
-         - run: npm run  build
+         - run: npm install
+         - run: npm run build  
