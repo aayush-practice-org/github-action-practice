@@ -11,7 +11,7 @@ jobs:
         runs-on: ubuntu-latest
 
         env:
-            PORT: 7000
+            PORT: ${{secrets.PORT}}
 
         strategy:
           matrix:
